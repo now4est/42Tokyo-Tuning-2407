@@ -23,4 +23,5 @@ test:
 	head -c 2000 | \
 	jq -Rs '{username: "ろぐ子ちゃん", content: .}' | \
 	curl -H "Content-Type: application/json" -X POST -d @- https://discord.com/api/webhooks/1266671844258349057/1pKcePHAIK1kC7NAqy_9N5ZLi2CkkDRRwsrKZwKOqbSPMx1o0Y9etZPvULl6150-g4UU
+	mysqldumpslow -s t ./webapp/mysql/logs/slow.log > webapp/mysql/logs/slow_dbg.$(DATE).log
 	docker compose -f ./webapp/docker-compose.local.yml exec nginx bash -c "cat /var/log/nginx/access.log | alp json -m '/api/user_image/[0-9]+,/orders/[0-9]+,/api/order/[0-9]+,/api/tow_truck/[0-9]+' --sort avg -r" > $(RESULT_NGINX_LOG_DIR)/$(DATE)
