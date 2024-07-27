@@ -43,7 +43,7 @@ services:
 
   db:
     container_name: mysql
-    image: 42tokyo2407.azurecr.io/mysql:latest
+    build: ./mysql
     environment:
       MYSQL_ROOT_PASSWORD: mysql
       MYSQL_DATABASE: 42Tokyo-db
