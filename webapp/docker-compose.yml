@@ -72,7 +72,7 @@ services:
 
   nginx:
     container_name: nginx
-    image: 42tokyo2407.azurecr.io/nginx:latest
+    build: ./nginx
     ports:
       - "443:443"
     volumes:
