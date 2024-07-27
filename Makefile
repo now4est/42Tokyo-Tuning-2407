@@ -14,7 +14,7 @@ test:
 	docker compose -f ./webapp/docker-compose.local.yml up -d
 	docker compose -f ./webapp/docker-compose.local.yml exec db touch $(MYSQL_LOG)
 	docker compose -f ./webapp/docker-compose.local.yml exec db mv $(MYSQL_LOG) $(MYSQL_LOG).$(DATE)
-	docker compose -f ./webapp/docker-compose.local.yml exec nginx rm $(NGINX_ACCESS_LOG)
+	docker compose -f ./webapp/docker-compose.local.yml exec nginx touch $(NGINX_ACCESS_LOG)
 	docker compose -f ./webapp/docker-compose.local.yml exec nginx mv $(NGINX_ACCESS_LOG) $(NGINX_ACCESS_LOG).$(DATE)
 	docker compose -f ./webapp/docker-compose.local.yml down
 	docker compose -f ./webapp/docker-compose.local.yml up -d
