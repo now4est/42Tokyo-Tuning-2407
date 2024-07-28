@@ -89,11 +89,10 @@ impl<
 
         let client_username = self
             .auth_repository
-            .find_user_by_id(order.client_id)
+            .find_username_by_id(order.client_id)
             .await
             .unwrap()
-            .unwrap()
-            .username;
+            .unwrap();
 
         let dispatcher = match order.dispatcher_id {
             Some(dispatcher_id) => self
@@ -109,11 +108,10 @@ impl<
                 Some(dispatcher.user_id),
                 Some(
                     self.auth_repository
-                        .find_user_by_id(dispatcher.user_id)
+                        .find_username_by_id(dispatcher.user_id)
                         .await
                         .unwrap()
                         .unwrap()
-                        .username,
                 ),
             ),
             None => (None, None),
@@ -133,11 +131,10 @@ impl<
                 Some(tow_truck.driver_id),
                 Some(
                     self.auth_repository
-                        .find_user_by_id(tow_truck.driver_id)
+                        .find_username_by_id(tow_truck.driver_id)
                         .await
                         .unwrap()
                         .unwrap()
-                        .username,
                 ),
             ),
             None => (None, None),
@@ -187,11 +184,10 @@ impl<
         for order in orders {
             let client_username = self
                 .auth_repository
-                .find_user_by_id(order.client_id)
+                .find_username_by_id(order.client_id)
                 .await
                 .unwrap()
-                .unwrap()
-                .username;
+                .unwrap();
 
             let dispatcher = match order.dispatcher_id {
                 Some(dispatcher_id) => self
@@ -207,11 +203,10 @@ impl<
                     Some(dispatcher.user_id),
                     Some(
                         self.auth_repository
-                            .find_user_by_id(dispatcher.user_id)
+                            .find_username_by_id(dispatcher.user_id)
                             .await
                             .unwrap()
                             .unwrap()
-                            .username,
                     ),
                 ),
                 None => (None, None),
@@ -231,11 +226,10 @@ impl<
                     Some(tow_truck.driver_id),
                     Some(
                         self.auth_repository
-                            .find_user_by_id(tow_truck.driver_id)
+                            .find_username_by_id(tow_truck.driver_id)
                             .await
                             .unwrap()
                             .unwrap()
-                            .username,
                     ),
                 ),
                 None => (None, None),
