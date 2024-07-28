@@ -11,6 +11,7 @@ all: test
 
 test:
 	mkdir -p $(RESULT_NGINX_LOG_DIR)
+	chmod 777 $(RESULT_NGINX_LOG_DIR)
 	docker compose -f ./webapp/docker-compose.local.yml up -d
 	docker compose -f ./webapp/docker-compose.local.yml exec db touch $(MYSQL_LOG)
 	docker compose -f ./webapp/docker-compose.local.yml exec db mv $(MYSQL_LOG) $(MYSQL_LOG).$(DATE)
